@@ -1,5 +1,21 @@
 # Object file
 *.o
+import unittest
+import lambda_handler
+
+class TestLambdaHandler(unittest.TestCase):
+    def test_lambda_handler(self):
+        event = {'name': 'World'}
+        expected_response = {
+            'statusCode': 200,
+            'body': '{"message": "Hello, World"}'
+        }
+
+        response = lambda_handler.lambda_handler(event, None)
+        self.assertEqual(response, expected_response)
+
+if __name__ == '__main__':
+    unittest.main()
 
 # Ada Library Information
 *.ali
